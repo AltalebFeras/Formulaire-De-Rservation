@@ -103,3 +103,34 @@ NombrePlaces.addEventListener("change", function () {
   nombrePlacesValue = parseInt(NombrePlaces.value);
   console.log(nombrePlacesValue);
 });
+
+
+function toggleCheck(checkbox) {
+  if (checkbox.checked) {
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+      if (el !== checkbox) {
+        el.disabled = true;
+      }
+    });
+  } else { alert("Veuillez selectionner la période correspondante.")
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+      el.disabled = false;
+    });
+  }
+}
+
+
+
+function toggleRadio(radio) {
+  if (radio.checked) {
+    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+      if (el !== radio) {
+        el.disabled = true;
+      }
+    });
+  } else { alert("Veuillez selectionner un Tarif.")
+    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+      el.disabled = false;
+    });
+  }
+}
