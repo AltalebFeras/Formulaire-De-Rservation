@@ -44,35 +44,35 @@
           <label for="tarifnormal">Ma réservation sera en tarif normal</label>
         <div id="SectionTarifNormal">
           <h3>Choisissez votre formule :</h3>
-          <input type="radio" name="passSelectionParJour" id="pass1jour" aria-required="true" onchange="toggleRadio(this)"/>
+          <input type="checkbox" name="passSelectionParJour" id="pass1jour" aria-required="true" onchange="toggleRadio(this)"/>
           <label for="pass1jour">Pass 1 jour : 40€</label>
 
           <!-- Si case cochée, afficher le choix du jour -->
           <section id="pass1jourDate">
-            <input type="checkbox" name="passSelection" id="choixJour1" />
+            <input type="checkbox" name="passSelection" id="choixJour1" aria-required="true" onchange="toggleCheck(this)" />
             <label for="choixJour1">Pass pour la journée du 01/07</label>
-            <input type="checkbox" name="passSelection" id="choixJour2" />
+            <input type="checkbox" name="passSelection" id="choixJour2" required onchange="toggleCheck(this)" />
             <label for="choixJour2">Pass pour la journée du 02/07</label>
-            <input type="checkbox" name="passSelection" id="choixJour3" />
+            <input type="checkbox" name="passSelection" id="choixJour3" required onchange="toggleCheck(this)"  />
             <label for="choixJour3">Pass pour la journée du 03/07</label>
           </section>
 
-          <input type="radio" name="passSelectionParJour" id="pass2jours" aria-required="true" onchange="toggleRadio(this)"/>
+          <input type="checkbox" name="passSelectionParJour" id="pass2jours" aria-required="true" onchange="toggleRadio(this)"/>
           <label for="pass2jours">Pass 2 jours : 70€</label>
 
           <!-- Si case cochée, afficher le choix des jours -->
           <section id="pass2joursDate">
-            <input type="checkbox" name="passSelection" id="choixJour12" />
+            <input type="checkbox" name="passSelection" id="choixJour12" aria-required="true" onchange="toggleCheck(this)" />
             <label for="choixJour12"
               >Pass pour deux journées du 01/07 au 02/07</label
             >
-            <input type="checkbox" name="passSelection" id="choixJour23" />
+            <input type="checkbox" name="passSelection" id="choixJour23" required onchange="toggleCheck(this)" />
             <label for="choixJour23"
               >Pass pour deux journées du 02/07 au 03/07</label
             >
           </section>
 
-          <input type="radio" name="passSelectionParJour" id="pass3jours" aria-required="true" onchange="toggleCheck(this)"/>
+          <input type="checkbox" name="passSelectionParJour" id="pass3jours" aria-required="true" onchange="toggleCheck(this)"/>
           <label for="pass3jours">Pass 3 jours : 100€</label>
         </div>
         <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
