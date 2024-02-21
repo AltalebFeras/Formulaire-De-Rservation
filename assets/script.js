@@ -19,18 +19,32 @@ let NombrePlaces = document.getElementById("NombrePlaces");
 console.log(tarifNormal);
 
 pass1jour.addEventListener("change", function () {
-
   if (pass1jour.checked) {
     pass2jours.style.display = "none";
-    pass3jours.style.display ="none";
+    pass3jours.style.display = "none";
 
-  
   } else {
     pass2jours.style.display = "block";
     pass3jours.style.display = "block";
+
+  }});
+  pass2jours.addEventListener("change", function () {
+  if (pass2jours.checked) {
+    pass1jour.style.display = "none";
+    pass3jours.style.display = "none";
+  } else {
+    pass1jour.style.display = "block";
+    pass3jours.style.display = "block";
+  }});
+  pass3jours.addEventListener("change", function () {
+  if (pass3jours.checked) {
+    pass2jours.style.display = "none";
+    pass1jour.style.display = "none";
+  } else {
+    pass2jours.style.display = "block";
+    pass1jour.style.display = "block";
   }
 });
-
 
 tarifReduit.addEventListener("change", function () {
   console.log(NombrePlaces.value);
@@ -72,11 +86,10 @@ function chooseTariff() {
   return true;
 }
 reservationBouton.addEventListener("click", function () {
-  if (chooseTariff() && NombrePlaces.value > 0) {
+  if (chooseTariff() && NombrePlaces.value > 0 && (pass1jour.checked || pass2jours.checked|| pass3jours.checked)) {
     reservationSection.style.display = "none";
     optionsSection.style.display = "block";
   }
-  
 });
 
 optionBouton.addEventListener("click", function () {
@@ -90,34 +103,3 @@ NombrePlaces.addEventListener("change", function () {
   nombrePlacesValue = parseInt(NombrePlaces.value);
   console.log(nombrePlacesValue);
 });
-
-
-function toggleCheck(checkbox) {
-  if (checkbox.checked) {
-    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
-      if (el !== checkbox) {
-        el.disabled = true;
-      }
-    });
-  } else { alert("Veuillez selectionner la période correspondante.")
-    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
-      el.disabled = false;
-    });
-  }
-}
-
-
-
-function toggleRadio(radio) {
-  if (radio.checked) {
-    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
-      if (el !== radio) {
-        el.disabled = true;
-      }
-    });
-  } else { alert("Veuillez selectionner un Tarif.")
-    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
-      el.disabled = false;
-    });
-  }
-}
