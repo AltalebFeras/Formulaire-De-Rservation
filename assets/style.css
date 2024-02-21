@@ -167,3 +167,8 @@ label {
 #coordonnees{
   flex-direction: column;
 }
+#alertOption{
+  font-size: large;
+  color: red;
+  font-weight: bolder;
+}
