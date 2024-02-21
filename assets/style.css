@@ -84,18 +84,16 @@ input[type="text"] {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-.DaccordBouton{
+.DaccordBouton {
   margin: 0px;
   background-color: #ffdccc;
   color: black;
   font-size: larger;
-
 }
 .DaccordBouton:hover,
 .bouton:hover {
   background-color: #ed8b8b;
   color: #ffffff;
-
 }
 
 label {
@@ -158,17 +156,24 @@ label {
   transition: all 0.5s ease-out;
   color: #ffffff;
 }
-#SectionTarifReduit{
+#SectionTarifReduit {
   display: none;
 }
-#SectionTarifNormal, #coordonnees, #options{
+#SectionTarifNormal,
+#coordonnees,
+#options {
   display: none;
 }
-#coordonnees{
+#coordonnees {
   flex-direction: column;
 }
-#alertOption{
+#alertOption {
   font-size: large;
   color: red;
   font-weight: bolder;
+}
+#pass1jourDate,
+#pass2joursDate,
+#pass3joursDate {
+  display: none;
 }
