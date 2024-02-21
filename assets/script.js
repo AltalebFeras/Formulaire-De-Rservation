@@ -17,6 +17,21 @@ let coordonneesSection = document.getElementById("coordonnees");
 let NombrePlaces = document.getElementById("NombrePlaces");
 
 console.log(tarifNormal);
+
+pass1jour.addEventListener("change", function () {
+
+  if (pass1jour.checked) {
+    pass2jours.style.display = "none";
+    pass3jours.style.display ="none";
+
+  
+  } else {
+    pass2jours.style.display = "block";
+    pass3jours.style.display = "block";
+  }
+});
+
+
 tarifReduit.addEventListener("change", function () {
   console.log(NombrePlaces.value);
   if (tarifReduit.checked) {
@@ -75,3 +90,34 @@ NombrePlaces.addEventListener("change", function () {
   nombrePlacesValue = parseInt(NombrePlaces.value);
   console.log(nombrePlacesValue);
 });
+
+
+function toggleCheck(checkbox) {
+  if (checkbox.checked) {
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+      if (el !== checkbox) {
+        el.disabled = true;
+      }
+    });
+  } else { alert("Veuillez selectionner la période correspondante.")
+    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+      el.disabled = false;
+    });
+  }
+}
+
+
+
+function toggleRadio(radio) {
+  if (radio.checked) {
+    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+      if (el !== radio) {
+        el.disabled = true;
+      }
+    });
+  } else { alert("Veuillez selectionner un Tarif.")
+    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+      el.disabled = false;
+    });
+  }
+}
