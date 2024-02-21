@@ -1,3 +1,4 @@
+// Declaration tous les variables
 let SectionTarifReduit = document.getElementById("SectionTarifReduit");
 let SectionTarifNormal = document.getElementById("SectionTarifNormal");
 let tarifReduit = document.getElementById("tarifReduit");
@@ -27,7 +28,40 @@ let choixJour12 = document.getElementById("choixJour12");
 let choixJour23 = document.getElementById("choixJour23");
 let choixJour13 = document.getElementById("choixJour13");
 
-console.log(choixJour13);
+//pour recuperer la valeur du input type number
+let nombrePlacesValue = 0;
+NombrePlaces.addEventListener("change", function () {
+  nombrePlacesValue = parseInt(NombrePlaces.value);
+});
+
+//afficher et cacher les tarifs en choissisant les input type radio.
+//afficher un alrt pour le tarif réduit.
+// afficher le tarif réduit.
+tarifReduit.addEventListener("change", function () {
+  if (tarifReduit.checked) {
+    popUpTarifReduit.style.display = "block";
+    SectionTarifReduit.style.display = "block";
+    SectionTarifNormal.style.display = "none";
+  } else {
+    SectionTarifNormal.style.display = "block";
+    SectionTarifReduit.style.display = "none";
+    popUpTarifReduit.style.display = "none";
+  }
+});
+//afficher un alrt pour le tarif réduit si l'utilisateur change  sa chois.
+//afficher le tarif normal.
+tarifNormal.addEventListener("change", function () {
+  console.log(NombrePlaces.value);
+  if (tarifNormal.checked) {
+    popUpTarifReduit.style.display = "none";
+    SectionTarifReduit.style.display = "none";
+    SectionTarifNormal.style.display = "block";
+  } else {
+    SectionTarifNormal.style.display = "none";
+    SectionTarifReduit.style.display = "block";
+  }
+});
+//afficher et cacher les pass en choissisant les input type radio de tarif normal .
 
 pass1jourNormal.addEventListener("change", function () {
   if (pass1jourNormal.checked) {
@@ -52,36 +86,12 @@ pass3joursNormal.addEventListener("change", function () {
     pass3joursDateSection.style.display = "block";
   }
 });
-
-tarifReduit.addEventListener("change", function () {
-  console.log(NombrePlaces.value);
-  if (tarifReduit.checked) {
-    alertOption.style.display = "none";
-    popUpTarifReduit.style.display = "block";
-    SectionTarifReduit.style.display = "block";
-    SectionTarifNormal.style.display = "none";
-  } else {
-    SectionTarifNormal.style.display = "block";
-    SectionTarifReduit.style.display = "none";
-    popUpTarifReduit.style.display = "none";
-  }
-});
-tarifNormal.addEventListener("change", function () {
-  console.log(NombrePlaces.value);
-  if (tarifNormal.checked) {
-    popUpTarifReduit.style.display = "none";
-    SectionTarifReduit.style.display = "none";
-    SectionTarifNormal.style.display = "block";
-  } else {
-    SectionTarifNormal.style.display = "none";
-    SectionTarifReduit.style.display = "block";
-  }
-});
+// cacher l'alert pour le dorit de tarif réduit.
 daccordBoutonTarifReduit.addEventListener("click", function () {
   popUpTarifReduit.style.display = "none";
   reservationBouton.style.display = "block";
 });
-
+// obliger l'utilisateur de choisir un tarif pour pass son reservation
 function chooseTariff() {
   if (!tarifReduit.checked && !tarifNormal.checked) {
     alertOption.textContent = "Choisissez un tarif";
@@ -89,11 +99,14 @@ function chooseTariff() {
   }
   return true;
 }
+
+//les conditions pour activer le bouton de reservation
 reservationBouton.addEventListener("click", function () {
   if (
     chooseTariff() &&
-    NombrePlaces.value > 0 &&
-    (pass1jour.checked ||
+    NombrePlaces.value > 0 && //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50.
+    (//ces tous les checkbox de tarif normal qui sont cachés
+      pass1jour.checked ||
       pass2jours.checked ||
       pass3jours.checked ||
       choixJour1.checked ||
@@ -106,8 +119,8 @@ reservationBouton.addEventListener("click", function () {
     reservationSection.style.display = "none";
     optionsSection.style.display = "block";
     alertOption.style.display = "none";
+    console.log(NombrePlaces.value); // pour verfier la valeur du input type number aprés avoir passer à la prochaine section .
   } else {
-    alertOption.style.display = "block";
     alertOption.textContent =
       "Veuillez indiquer le nombre de réservations et sélectionner un tarif ainsi qu'un pass.";
   }
@@ -118,13 +131,7 @@ optionBouton.addEventListener("click", function () {
   coordonneesSection.style.display = "flex";
 });
 
-let nombrePlacesValue = 0;
-
-NombrePlaces.addEventListener("change", function () {
-  nombrePlacesValue = parseInt(NombrePlaces.value);
-  console.log(nombrePlacesValue);
-});
-
+// function pour limiter les mulitiplication de chocher les inputs type checkbox.
 function toggleCheck(checkbox) {
   if (checkbox.checked) {
     document.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
@@ -140,6 +147,7 @@ function toggleCheck(checkbox) {
     });
   }
 }
+// function pour limiter les mulitiplication de chocher les inputs type checkbox.
 
 function toggleRadio(radio) {
   if (radio.checked) {
