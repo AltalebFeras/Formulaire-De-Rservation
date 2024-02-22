@@ -14,8 +14,8 @@ if (isset($_GET['section'])) {
     case 'compte':
       $section = 'compte';
     break 1;
-    case 'abonnements':
-      $section = 'abonnements';
+    case 'reservation':
+      $section = 'reservation';
     break 1;
     default:
       $section = null;
@@ -32,7 +32,7 @@ include 'includes/header.php';
     <?php if ($section == "compte") {
       include 'includes/section-compte.php';
     } else { ?>
-      <p>Vous n'avez pas encore d'abonnements.</p>
+      <p>Vous n'avez pas encore de réservation.</p>
     <?php } ?>
   </div>
 </main>
