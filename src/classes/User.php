@@ -1,11 +1,14 @@
 <?php
 
-class User {
+class User
+{
   private $_id;
   private $_nom;
   private $_prenom;
   private $_mail;
   private $_password;
+  private $_address;
+  private $_numero;
   private $_role;
 
   /**
@@ -14,76 +17,110 @@ class User {
    * @param string $prenom   Le prénom de l'utilisateur
    * @param string $mail     Le mail de l'utilisateur
    * @param string $password Le mot de passe chiffré de l'utilisateur
+   * @param string $address  L'addresse de l'utilisateur
+   * @param string  $numero   Le numéro de téléphone de l'utlisateur
    * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
    */
-  function __construct(string $nom, string $prenom,string $mail,string $password,int|string $id = "à créer", $role = "user"){
+  function __construct(string $nom, string $prenom, string $mail, string $password, string $address, string $numero, int|string $id = "à créer", $role = "user")
+  {
     $this->setId($id);
     $this->setNom($nom);
     $this->setPrenom($prenom);
     $this->setMail($mail);
+    $this->setAddress($address);
+    $this->setNumero($numero);
     $this->setPassword($password);
     $this->setRole($role);
   }
 
-  public function getId(): int {
+  public function getId(): int
+  {
     return $this->_id;
   }
-  public function setId(int|string $id){
+  public function setId(int|string $id)
+  {
     if (is_string($id) && $id === "à créer") {
       $this->_id = $this->CreerNouvelId();
-    }else {
+    } else {
       $this->_id = $id;
     }
-
   }
-  public function getNom(): string {
+  public function getNom(): string
+  {
     return $this->_nom;
   }
-  public function setNom(string $nom){
+  public function setNom(string $nom)
+  {
     $this->_nom = $nom;
   }
-  public function getPrenom(): string {
+  public function getPrenom(): string
+  {
     return $this->_prenom;
   }
-  public function setPrenom(string $prenom){
+  public function setPrenom(string $prenom)
+  {
     $this->_prenom = $prenom;
   }
-  public function getMail(): string {
+  public function getMail(): string
+  {
     return $this->_mail;
   }
-  public function setMail(string $mail){
+  public function setMail(string $mail)
+  {
     $this->_mail = $mail;
   }
-  public function getPassword(): string {
+ public function getAddress(): string
+ {
+  return $this-> _address;
+ }
+  public function setAddress(string $address)
+  {
+    $this->_address = $address;
+  }
+  public function getNumero(): string
+ {
+  return $this-> _numero;
+ }
+  public function setNumero(string $numero)
+  {
+    $this->_numero = $numero;
+  }
+  public function getPassword(): string
+  {
     return $this->_password;
   }
-  public function setPassword(string $password){
+  public function setPassword(string $password)
+  {
     $this->_password = $password;
   }
 
-  public function getRole(): string {
+  public function getRole(): string
+  {
     return $this->_role;
   }
-  public function setRole(string $role): void {
+  public function setRole(string $role): void
+  {
     $this->_role = $role;
   }
 
-  public function isAdmin() {
+  public function isAdmin()
+  {
     if ($this->getRole() == "admin") {
       return true;
-    }else {
+    } else {
       return false;
     }
   }
 
-  private function CreerNouvelId(){
+  private function CreerNouvelId()
+  {
     $Database = new Database();
     $utilisateurs = $Database->getAllUtilisateurs();
 
     // On crée un tableau dans lequel on stockera tous les ids existants.
     $IDs = [];
 
-    foreach($utilisateurs as $utilisateur){
+    foreach ($utilisateurs as $utilisateur) {
       $IDs[] = $utilisateur->getId();
     }
 
@@ -92,7 +129,7 @@ class User {
     $unique = false;
     while ($unique === false) {
       if (in_array($i, $IDs)) {
-        $i ++;
+        $i++;
       } else {
         $unique = true;
       }
@@ -100,14 +137,18 @@ class User {
     return $i;
   }
 
-  public function getObjectToArray(): array {
+  public function getObjectToArray(): array
+  {
     return [
       "id" => $this->getId(),
       "nom" => $this->getNom(),
       "prenom" => $this->getPrenom(),
       "mail" => $this->getMail(),
+      "adresse" => $this->getAddress(),
+      "numero" => $this->getNumero(),
       "password" => $this->getPassword(),
       "role" => $this->getRole()
     ];
   }
 }
+ 

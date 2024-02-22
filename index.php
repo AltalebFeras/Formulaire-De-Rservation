@@ -7,8 +7,13 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script src="./assets/script.js" async></script>
   </head>
+  <?php
+  session_start();
+
+  include './includes/header.php';
+  ?>
   <body>
-    <form action="traitement.php" id="inscription" method="POST">
+    <form action="./src/traitement.php" id="inscription" method="POST">
       <fieldset id="reservation">
         <legend>Réservation</legend>
         <h3>Nombre de réservation(s) :</h3>
