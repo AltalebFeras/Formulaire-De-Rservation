@@ -5,80 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulaire de réservation Music Vercos Festival</title>
     <link rel="stylesheet" href="./assets/style.css" />
-    <script src="./assets/script.js" async  ></script>
+    <script src="./assets/script.js" async></script>
   </head>
+  <?php
+  session_start();
+
+  include './includes/header.php';
+  ?>
   <body>
-    <form action="traitement.php" id="inscription" method="POST">
+    <form action="./src/traitement.php" id="inscription" method="POST">
       <fieldset id="reservation">
         <legend>Réservation</legend>
         <h3>Nombre de réservation(s) :</h3>
-        <input type="number" name="nombrePlaces" id="NombrePlaces" required  min="1" max="50" />
+        <input
+          type="number"
+          name="nombrePlaces"
+          id="NombrePlaces"
+          min="1"
+          max="50"
+        />
         <div class="lesTarifs">
           <h3>Réservation(s) en tarif réduit</h3>
           <input type="radio" name="tarif" id="tarifReduit" />
           <label for="tarifReduit">Ma réservation sera en tarif réduit</label>
-          
         </div>
         <div class="card">
           <p class="small-desc">
-           <b> Attention !</b>
-           <br>
-           Si vous choisissez cette option, vous devrez présenter une justification à l'entrée.
+            <b> Attention !</b>
+            <br />
+            Si vous choisissez cette option, vous devrez présenter une
+            justification à l'entrée.
           </p>
           <p class="DaccordBouton">D'accord</p>
-
-       
-          </div>
         </div>
-        
+
         <div id="SectionTarifReduit">
           <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
-          <input type="checkbox" name="passSelection" id="pass1jour" />
+          <input
+            type="checkbox"
+            name="passSelection"
+            aria-required="true"
+            onchange="toggleCheck(this) , toggleRadio(this)"
+            id="pass1jour"
+          />
           <label for="pass1jour">Pass 1 jour : 25€</label>
-          <input type="checkbox" name="passSelection" id="pass2jours" />
+          <input
+            type="checkbox"
+            name="passSelection"
+            aria-required="true"
+            onchange="toggleCheck(this) , toggleRadio(this) "
+            id="pass2jours"
+          />
           <label for="pass2jours">Pass 2 jours : 50€</label>
-          <input type="checkbox" name="passSelection" id="pass3jours" />
+          <input
+            type="checkbox"
+            name="passSelection"
+            aria-required="true"
+            onchange="toggleCheck(this) , toggleRadio(this)"
+            id="pass3jours"
+          />
           <label for="pass3jours">Pass 3 jours : 65€</label>
         </div>
+
+        <!-- tarifs normal -->
+
         <h3>Réservation(s) en tarif normal</h3>
-          <input type="radio" name="tarif" id="tarifNormal" />
-          <label for="tarifnormal">Ma réservation sera en tarif normal </label>
+        <input type="radio" name="tarif" id="tarifNormal" />
+        <label for="tarifNormal">Ma réservation sera en tarif normal </label>
+
         <div id="SectionTarifNormal">
-          <h3>Choisissez votre formule *:</h3>
-          <input type="checkbox" name="passSelectionParJour" id="pass1jour" required onchange="toggleRadio(this)"/>
-          <label for="pass1jour">Pass 1 jour : 40€</label>
+          <h3>Choisissez votre formule:</h3>
+          <input
+            type="radio"
+            name="passSelectionParJour"
+            id="pass1jourNormal"
+          />
+          <label for="pass1jourNormal">Pass 1 jour : 40€</label>
 
           <!-- Si case cochée, afficher le choix du jour -->
           <section id="pass1jourDate">
-            <input type="checkbox" name="passSelection" id="choixJour1" aria-required="true" onchange="toggleCheck(this)" />
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour1"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
             <label for="choixJour1">Pass pour la journée du 01/07</label>
-            <input type="checkbox" name="passSelection" id="choixJour2" required onchange="toggleCheck(this)" />
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour2"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
             <label for="choixJour2">Pass pour la journée du 02/07</label>
-            <input type="checkbox" name="passSelection" id="choixJour3" required onchange="toggleCheck(this)"  />
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour3"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
             <label for="choixJour3">Pass pour la journée du 03/07</label>
           </section>
 
-          <input type="checkbox" name="passSelectionParJour" id="pass2jours" required onchange="toggleRadio(this)"/>
-          <label for="pass2jours">Pass 2 jours : 70€</label>
+          <input
+            type="radio"
+            name="passSelectionParJour"
+            id="pass2joursNormal"
+          />
+          <label for="pass2joursNormal">Pass 2 jours : 70€</label>
 
           <!-- Si case cochée, afficher le choix des jours -->
           <section id="pass2joursDate">
-            <input type="checkbox" name="passSelection" id="choixJour12" required onchange="toggleCheck(this)" />
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour12"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
             <label for="choixJour12"
               >Pass pour deux journées du 01/07 au 02/07</label
             >
-            <input type="checkbox" name="passSelection" id="choixJour23" required onchange="toggleCheck(this)" />
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour23"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
             <label for="choixJour23"
               >Pass pour deux journées du 02/07 au 03/07</label
             >
           </section>
 
-          <input type="checkbox" name="passSelectionParJour" id="pass3jours" aria-required="true" onchange="toggleCheck(this)"/>
-          <label for="pass3jours">Pass 3 jours : 100€</label>
+          <input
+            type="radio"
+            name="passSelectionParJour"
+            id="pass3joursNormal"
+          />
+          <label for="pass3joursNormal">Pass 3 jours : 100€</label>
+          <section id="pass3joursDate">
+            <input
+              type="checkbox"
+              name="passSelection"
+              id="choixJour13"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+            />
+            <label for="choixJour13"
+              >Pass pour trois journées du 01/07 au 03/07</label
+            >
+          </section>
         </div>
         <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
 
-        <p id="reservationBouton" class="bouton" onclick="suivant('option')">Suivant</p>
+        <p id="reservationBouton" class="bouton" onclick="suivant('option')">
+          Suivant
+        </p>
         <p id="alertOption"></p>
       </fieldset>
       <fieldset id="options">
@@ -104,15 +190,13 @@
         <label for="van3Nuits">Pour les 3 nuits (12€)</label>
 
         <h3>Venez-vous avec des enfants ?</h3>
-        <input type="checkbox" name="enfantsOui" /><label for="enfantsOui"
-          >Oui</label
-        >
-        <input type="checkbox" name="enfantsNon" /><label for="enfantsNon"
-          >Non</label
-        >
+        <select name="enfants" id="venirAvecDesEnfants">
+          <option value="non">Non</option>
+          <option value="oui">Oui</option>
+        </select>
 
         <!-- Si oui, afficher : -->
-        <section>
+        <section id="sectionEnfantOption">
           <h4>
             Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?
           </h4>
@@ -123,15 +207,26 @@
             type="number"
             name="nombreCasquesEnfants"
             id="nombreCasquesEnfants"
+            min="1"
+            max="5"
           />
           <p>*Dans la limite des stocks disponibles.</p>
         </section>
 
         <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
         <label for="NombreLugesEte">Nombre de descentes en luge d'été :</label>
-        <input type="number" name="NombreLugesEte" id="NombreLugesEte" />
 
-        <p id="optionBouton" class="bouton" onclick="suivant('coordonnees')">Suivant</p>
+        <input
+          type="number"
+          name="NombreLugesEte"
+          id="NombreLugesEte"
+          min="1"
+          max="5"
+        />
+
+        <p id="optionBouton" class="bouton" onclick="suivant('coordonnees')">
+          Suivant
+        </p>
       </fieldset>
       <fieldset id="coordonnees">
         <legend>Coordonnées</legend>
