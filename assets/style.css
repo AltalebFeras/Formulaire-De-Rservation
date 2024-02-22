@@ -7,6 +7,125 @@ body {
 #inscription {
   background: linear-gradient(to bottom, #ffcccc 0%, #ccffcc 33%, #ccccff 66%);
 }
+input[type="text"],
+input[type="radio"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="checkbox"] {
+  margin-bottom: 10px;
+}
+
+input[type="number"],
+input[type="email"],
+input[type="text"] {
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+}
+.bouton,
+.DaccordBouton {
+  width: fit-content;
+  display: flex;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.DaccordBouton {
+  margin: 0px;
+  background-color: #ffdccc;
+  color: black;
+  font-size: larger;
+}
+.DaccordBouton:hover,
+.bouton:hover,
+.boutonSubmit:hover {
+  background-color: #ed8b8b;
+  color: #ffffff;
+}
+#reservationBouton {
+  margin-left: 300px;
+}
+.boutonSubmit {
+  margin: 15px;
+  width: fit-content;
+  display: flex;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 0px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+label {
+  font-size: 1rem;
+  color: #333333;
+  margin-bottom: 5px;
+}
+#coordonnees {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+#SectionTarifNormal,
+#sectionEnfantOption,
+#coordonnees,
+#options,
+#pass1jourDate,
+#pass2joursDate,
+#SectionTarifReduit,
+#pass3joursDate {
+  display: none;
+}
+#coordonnees {
+  flex-direction: column;
+}
+#alertOption {
+  text-align: justify;
+  max-width: 300px;
+  font-size: large;
+  color: red;
+  font-weight: bolder;
+}
+.divPassReduit,
+.divPassNormal {
+  background-color: #ccccff;
+  color: red;
+}
+#pass2joursDate,
+#pass1jourDate,
+#pass3joursDate {
+  width: 550px;
+  flex-direction: column;
+  align-items: center;
+}
+#SectionTarifReduit {
+  flex-direction: column;
+  align-items: center;
+}
+.boutonSuivantPrecedentDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+#boutonPrecedentVersOption {
+  margin-right: 255px;
+}
+/* key frame section */ /* key frame section */ /* key frame section */
+/* key frame section */ /* key frame section */ /* key frame section */
+/* key frame section */ /* key frame section */ /* key frame section */
+/* key frame section */ /* key frame section */ /* key frame section */
 
 legend {
   font-size: 28px;
@@ -50,61 +169,6 @@ legend::after {
     transform: scale(1.8);
     opacity: 0;
   }
-}
-
-input[type="text"],
-input[type="radio"],
-input[type="email"],
-input[type="number"],
-input[type="tel"],
-input[type="checkbox"],
-input[type="submit"] {
-  margin-bottom: 10px;
-}
-
-input[type="number"],
-input[type="email"],
-input[type="text"] {
-  padding: 0.5rem;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 200px;
-}
-.bouton,
-.DaccordBouton {
-  width: fit-content;
-  display: flex;
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-.DaccordBouton {
-  margin: 0px;
-  background-color: #ffdccc;
-  color: black;
-  font-size: larger;
-}
-.DaccordBouton:hover,
-.bouton:hover {
-  background-color: #ed8b8b;
-  color: #ffffff;
-}
-
-label {
-  font-size: 1rem;
-  color: #333333;
-  margin-bottom: 5px;
-}
-#coordonnees {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
 }
 
 .small-desc {
@@ -155,23 +219,4 @@ label {
 .card:hover .card-title {
   transition: all 0.5s ease-out;
   color: #ffffff;
-}
-
-#SectionTarifNormal,
-#sectionEnfantOption,
-#coordonnees,
-#options,
-#pass1jourDate,
-#pass2joursDate,
-#SectionTarifReduit,
-#pass3joursDate {
-  display: none;
-}
-#coordonnees {
-  flex-direction: column;
-}
-#alertOption {
-  font-size: large;
-  color: red;
-  font-weight: bolder;
 }

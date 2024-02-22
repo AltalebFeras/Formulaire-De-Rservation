@@ -32,6 +32,12 @@ let venirAvecDesEnfants = document.getElementById("venirAvecDesEnfants");
 let alertOptionEnfant = document.getElementById(" alertOptionEnfant");
 let nombreCasquesEnfants = document.getElementById("nombreCasquesEnfants");
 let NombreLugesEte = document.getElementById("NombreLugesEte");
+let boutonPrecedentVersOption = document.getElementById(
+  "boutonPrecedentVersOption"
+);
+let boutonPrecedentVersReservation = document.getElementById(
+  "boutonPrecedentVersReservation"
+);
 
 //pour recuperer la valeur du input type number
 let nombrePlacesValue = 0;
@@ -45,7 +51,7 @@ NombrePlaces.addEventListener("change", function () {
 tarifReduit.addEventListener("change", function () {
   if (tarifReduit.checked) {
     popUpTarifReduit.style.display = "block";
-    SectionTarifReduit.style.display = "block";
+    SectionTarifReduit.style.display = "flex";
     SectionTarifNormal.style.display = "none";
   } else {
     SectionTarifNormal.style.display = "block";
@@ -70,7 +76,7 @@ tarifNormal.addEventListener("change", function () {
 
 pass1jourNormal.addEventListener("change", function () {
   if (pass1jourNormal.checked) {
-    pass1jourDateSection.style.display = "block";
+    pass1jourDateSection.style.display = "flex";
     pass2joursDateSection.style.display = "none";
     pass3joursDateSection.style.display = "none";
   }
@@ -79,7 +85,7 @@ pass1jourNormal.addEventListener("change", function () {
 pass2joursNormal.addEventListener("change", function () {
   if (pass2joursNormal.checked) {
     pass1jourDateSection.style.display = "none";
-    pass2joursDateSection.style.display = "block";
+    pass2joursDateSection.style.display = "flex";
     pass3joursDateSection.style.display = "none";
   }
 });
@@ -88,7 +94,7 @@ pass3joursNormal.addEventListener("change", function () {
   if (pass3joursNormal.checked) {
     pass1jourDateSection.style.display = "none";
     pass2joursDateSection.style.display = "none";
-    pass3joursDateSection.style.display = "block";
+    pass3joursDateSection.style.display = "flex";
   }
 });
 // cacher l'alert pour le dorit de tarif réduit.
@@ -130,6 +136,14 @@ reservationBouton.addEventListener("click", function () {
   }
 });
 
+boutonPrecedentVersReservation.addEventListener("click", function () {
+  optionsSection.style.display = "none";
+  reservationSection.style.display = "block";
+});
+boutonPrecedentVersOption.addEventListener("click", function () {
+  optionsSection.style.display = "block";
+  coordonneesSection.style.display = "none";
+});
 optionBouton.addEventListener("click", function () {
   optionsSection.style.display = "none";
   coordonneesSection.style.display = "flex";

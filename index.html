@@ -16,9 +16,11 @@
           type="number"
           name="nombrePlaces"
           id="NombrePlaces"
+          required
           min="1"
           max="50"
         />
+
         <div class="lesTarifs">
           <h3>Réservation(s) en tarif réduit</h3>
           <input type="radio" name="tarif" id="tarifReduit" />
@@ -36,30 +38,39 @@
 
         <div id="SectionTarifReduit">
           <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
-          <input
-            type="checkbox"
-            name="passSelection"
-            aria-required="true"
-            onchange="toggleCheck(this) , toggleRadio(this)"
-            id="pass1jour"
-          />
-          <label for="pass1jour">Pass 1 jour : 25€</label>
-          <input
-            type="checkbox"
-            name="passSelection"
-            aria-required="true"
-            onchange="toggleCheck(this) , toggleRadio(this) "
-            id="pass2jours"
-          />
-          <label for="pass2jours">Pass 2 jours : 50€</label>
-          <input
-            type="checkbox"
-            name="passSelection"
-            aria-required="true"
-            onchange="toggleCheck(this) , toggleRadio(this)"
-            id="pass3jours"
-          />
-          <label for="pass3jours">Pass 3 jours : 65€</label>
+          <div class="divPassReduit">
+            <input
+              type="checkbox"
+              name="passSelection"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+              id="pass1jour"
+              value="pass1jourreduit"
+            />
+            <label for="pass1jour">Pass 1 jour : 25€</label>
+          </div>
+          <div class="divPassReduit">
+            <input
+              type="checkbox"
+              name="passSelection"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this) "
+              id="pass2jours"
+              value="pass2joursreduit"
+            />
+            <label for="pass2jours">Pass 2 jours : 50€</label>
+          </div>
+          <div class="divPassReduit">
+            <input
+              type="checkbox"
+              name="passSelection"
+              aria-required="true"
+              onchange="toggleCheck(this) , toggleRadio(this)"
+              id="pass3jours"
+              value="pass3joursreduit"
+            />
+            <label for="pass3jours">Pass 3 jours : 65€</label>
+          </div>
         </div>
 
         <!-- tarifs normal -->
@@ -72,87 +83,109 @@
           <h3>Choisissez votre formule:</h3>
           <input
             type="radio"
-            name="passSelectionParJour"
+            name="passSelection"
             id="pass1jourNormal"
+            value="pass1jour"
           />
           <label for="pass1jourNormal">Pass 1 jour : 40€</label>
 
           <!-- Si case cochée, afficher le choix du jour -->
           <section id="pass1jourDate">
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour1"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour1">Pass pour la journée du 01/07</label>
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour2"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour2">Pass pour la journée du 02/07</label>
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour3"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour3">Pass pour la journée du 03/07</label>
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                name="pass1jour"
+                id="choixJour1"
+                value="choixJour1"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour1">Pass pour la journée du 01/07</label>
+            </div>
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                value="choixJour1"
+                id="choixJour2"
+                value="choixJour2"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour2">Pass pour la journée du 02/07</label>
+            </div>
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                value="choixJour1"
+                id="choixJour3"
+                value="choixJour3"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour3">Pass pour la journée du 03/07</label>
+            </div>
           </section>
 
           <input
             type="radio"
-            name="passSelectionParJour"
+            name="passSelection"
             id="pass2joursNormal"
+            value="pass2joursNormal"
           />
           <label for="pass2joursNormal">Pass 2 jours : 70€</label>
 
           <!-- Si case cochée, afficher le choix des jours -->
           <section id="pass2joursDate">
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour12"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour12"
-              >Pass pour deux journées du 01/07 au 02/07</label
-            >
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour23"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour23"
-              >Pass pour deux journées du 02/07 au 03/07</label
-            >
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                name="pass2jours"
+                id="choixJour12"
+                value="choixJour12"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour12"
+                >Pass pour deux journées du 01/07 au 02/07</label
+              >
+            </div>
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                name="pass2jours"
+                id="choixJour23"
+                value="choixJour23"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour23"
+                >Pass pour deux journées du 02/07 au 03/07</label
+              >
+            </div>
           </section>
 
           <input
             type="radio"
-            name="passSelectionParJour"
+            name="passSelection"
             id="pass3joursNormal"
+            value="pass3joursNormal"
           />
           <label for="pass3joursNormal">Pass 3 jours : 100€</label>
+
           <section id="pass3joursDate">
-            <input
-              type="checkbox"
-              name="passSelection"
-              id="choixJour13"
-              aria-required="true"
-              onchange="toggleCheck(this) , toggleRadio(this)"
-            />
-            <label for="choixJour13"
-              >Pass pour trois journées du 01/07 au 03/07</label
-            >
+            <div class="divPassNormal">
+              <input
+                type="checkbox"
+                name="pass3joursNormal"
+                id="choixJour13"
+                value="choixJour13"
+                aria-required="true"
+                onchange="toggleCheck(this) , toggleRadio(this)"
+              />
+              <label for="choixJour13"
+                >Pass pour trois journées du 01/07 au 03/07</label
+              >
+            </div>
           </section>
         </div>
         <!-- FACULTATIF : ajouter un pass groupe (5 adultes : 150€ / jour) uniquement pass 1 jour -->
@@ -219,9 +252,12 @@
           max="5"
         />
 
-        <p id="optionBouton" class="bouton" onclick="suivant('coordonnees')">
-          Suivant
-        </p>
+        <div class="boutonSuivantPrecedentDiv">
+          <p class="bouton" id="boutonPrecedentVersReservation">Précédent</p>
+          <p id="optionBouton" class="bouton" onclick="suivant('coordonnees')">
+            Suivant
+          </p>
+        </div>
       </fieldset>
       <fieldset id="coordonnees">
         <legend>Coordonnées</legend>
@@ -236,12 +272,15 @@
         <label for="adressePostale">Adresse Postale :</label>
         <input type="text" name="adressePostale" id="adressePostale" required />
 
-        <input
-          type="submit"
-          name="soumission"
-          class="bouton"
-          value="Réserver"
-        />
+        <div class="boutonSuivantPrecedentDiv">
+          <p class="bouton" id="boutonPrecedentVersOption">Précédent</p>
+          <input
+            type="submit"
+            name="soumission"
+            class="boutonSubmit"
+            value="Réserver"
+          />
+        </div>
       </fieldset>
     </form>
   </body>
