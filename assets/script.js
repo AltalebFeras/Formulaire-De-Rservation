@@ -27,16 +27,18 @@ pass1jour.addEventListener("change", function () {
     pass2jours.style.display = "block";
     pass3jours.style.display = "block";
 
-  }});
-  pass2jours.addEventListener("change", function () {
+  }
+});
+pass2jours.addEventListener("change", function () {
   if (pass2jours.checked) {
     pass1jour.style.display = "none";
     pass3jours.style.display = "none";
   } else {
     pass1jour.style.display = "block";
     pass3jours.style.display = "block";
-  }});
-  pass3jours.addEventListener("change", function () {
+  }
+});
+pass3jours.addEventListener("change", function () {
   if (pass3jours.checked) {
     pass2jours.style.display = "none";
     pass1jour.style.display = "none";
@@ -86,7 +88,7 @@ function chooseTariff() {
   return true;
 }
 reservationBouton.addEventListener("click", function () {
-  if (chooseTariff() && NombrePlaces.value > 0 && (pass1jour.checked || pass2jours.checked|| pass3jours.checked)) {
+  if (chooseTariff() && NombrePlaces.value > 0) {
     reservationSection.style.display = "none";
     optionsSection.style.display = "block";
   }
@@ -107,13 +109,14 @@ NombrePlaces.addEventListener("change", function () {
 
 function toggleCheck(checkbox) {
   if (checkbox.checked) {
-    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
       if (el !== checkbox) {
         el.disabled = true;
       }
     });
-  } else { alert("Veuillez selectionner la période correspondante.")
-    document.querySelectorAll('input[type="checkbox"]').forEach(function(el) {
+  } else {
+    alert("Veuillez selectionner la période correspondante.")
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
       el.disabled = false;
     });
   }
@@ -123,13 +126,14 @@ function toggleCheck(checkbox) {
 
 function toggleRadio(radio) {
   if (radio.checked) {
-    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+    document.querySelectorAll('input[type="radio"]').forEach(function (el) {
       if (el !== radio) {
         el.disabled = true;
       }
     });
-  } else { alert("Veuillez selectionner un Tarif.")
-    document.querySelectorAll('input[type="radio"]').forEach(function(el) {
+  } else {
+    alert("Veuillez selectionner un Tarif.")
+    document.querySelectorAll('input[type="radio"]').forEach(function (el) {
       el.disabled = false;
     });
   }
