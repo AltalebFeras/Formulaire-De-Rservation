@@ -156,12 +156,15 @@ label {
   transition: all 0.5s ease-out;
   color: #ffffff;
 }
-#SectionTarifReduit {
-  display: none;
-}
+
 #SectionTarifNormal,
+#sectionEnfantOption,
 #coordonnees,
-#options {
+#options,
+#pass1jourDate,
+#pass2joursDate,
+#SectionTarifReduit,
+#pass3joursDate {
   display: none;
 }
 #coordonnees {
@@ -171,9 +174,4 @@ label {
   font-size: large;
   color: red;
   font-weight: bolder;
-}
-#pass1jourDate,
-#pass2joursDate,
-#pass3joursDate {
-  display: none;
 }

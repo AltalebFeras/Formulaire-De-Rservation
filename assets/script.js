@@ -27,6 +27,11 @@ let choixJour3 = document.getElementById("choixJour3");
 let choixJour12 = document.getElementById("choixJour12");
 let choixJour23 = document.getElementById("choixJour23");
 let choixJour13 = document.getElementById("choixJour13");
+let sectionEnfantOption = document.getElementById("sectionEnfantOption");
+let venirAvecDesEnfants = document.getElementById("venirAvecDesEnfants");
+let alertOptionEnfant = document.getElementById(" alertOptionEnfant");
+let nombreCasquesEnfants = document.getElementById("nombreCasquesEnfants");
+let NombreLugesEte = document.getElementById("NombreLugesEte");
 
 //pour recuperer la valeur du input type number
 let nombrePlacesValue = 0;
@@ -104,9 +109,8 @@ function chooseTariff() {
 reservationBouton.addEventListener("click", function () {
   if (
     chooseTariff() &&
-    NombrePlaces.value > 0 && //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50.
-    (//ces tous les checkbox de tarif normal qui sont cachés
-      pass1jour.checked ||
+    NombrePlaces.value > 0 && //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50. //ces tous les checkbox de tarif normal qui sont cachés
+    (pass1jour.checked ||
       pass2jours.checked ||
       pass3jours.checked ||
       choixJour1.checked ||
@@ -119,7 +123,7 @@ reservationBouton.addEventListener("click", function () {
     reservationSection.style.display = "none";
     optionsSection.style.display = "block";
     alertOption.style.display = "none";
-    console.log(NombrePlaces.value); // pour verfier la valeur du input type number aprés avoir passer à la prochaine section .
+    console.log("NombrePlaces est = " + NombrePlaces.value); // pour verfier la valeur du input type number aprés avoir passer à la prochaine section .
   } else {
     alertOption.textContent =
       "Veuillez indiquer le nombre de réservations et sélectionner un tarif ainsi qu'un pass.";
@@ -132,21 +136,31 @@ optionBouton.addEventListener("click", function () {
 });
 
 // function pour limiter les mulitiplication de chocher les inputs type checkbox.
+// modification ajoutée pour que on puisse cocher les autres inputs dns la section option.car en cliquant sur les input type check box
+//la function va cocher un seul input et met les autres input in cochable.
 function toggleCheck(checkbox) {
+  let fieldset = document.getElementById("options"); // recuperer le fieldset
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
   if (checkbox.checked) {
-    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
-      if (el !== checkbox) {
+    checkboxes.forEach(function (el) {
+      if (el !== checkbox && !fieldset.contains(el)) {
+        // Exclure  les checkboxes de ce  fieldset
         el.disabled = true;
         alertOption.textContent = "";
       }
     });
   } else {
     alertOption.textContent = "Choisissez un tarif";
-    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) {
-      el.disabled = false;
+    checkboxes.forEach(function (el) {
+      if (!fieldset.contains(el)) {
+        // Exclure  les checkboxes de ce  fieldset
+        el.disabled = false;
+      }
     });
   }
 }
+
 // function pour limiter les mulitiplication de chocher les inputs type checkbox.
 
 function toggleRadio(radio) {
@@ -164,3 +178,34 @@ function toggleRadio(radio) {
     });
   }
 }
+// pour afficher at cacher la section venir avec des enfants.
+venirAvecDesEnfants.addEventListener("change", function () {
+  if (venirAvecDesEnfants.value === "non") {
+    sectionEnfantOption.style.display = "none";
+    alertOptionEnfant.style.display = "none";
+  } else if (venirAvecDesEnfants.value === "oui") {
+    sectionEnfantOption.style.display = "block";
+    alertOptionEnfant.style.display = "none";
+  }
+});
+
+//pour recuperer la valeur du input type number
+let nombreCasquesEnfantsValue = 0;
+nombreCasquesEnfants.addEventListener("change", function () {
+  nombreCasquesEnfantsValue = parseInt(nombreCasquesEnfants.value);
+});
+let NombreLugesEteValue = 0;
+NombreLugesEte.addEventListener("change", function () {
+  NombreLugesEteValue = parseInt(NombreLugesEte.value);
+});
+
+// pour s'assurer que la valeur de nombre de casque soit 0 en option non et cacher , si je marque j'en ai besoin 2 casques puis
+//j'ai fait non je n'en ai pas besoin , alors le nombre de casque rest 2 c'est pour cela j'ai du le mettre a 0 en option non .
+optionBouton.addEventListener("click", function () {
+  if (venirAvecDesEnfants.value === "non") {
+    nombreCasquesEnfantsValue = 0;
+    console.log(" nombre de casque est = " + nombreCasquesEnfantsValue);
+  } else if (venirAvecDesEnfants.value === "oui") {
+    console.log(" nombre de casque est = " + nombreCasquesEnfantsValue);
+  }
+});
