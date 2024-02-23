@@ -2,54 +2,77 @@
 require 'config.php';
 require 'classes/Database.php';
 require 'classes/User.php';
+require 'classes/Resa.php';
 
 $Database = new Database();
 
-if (isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['mail']) && isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['address']) && isset($_POST['numero'])) {
+if (isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['email']) && isset($_POST['adressePostale']) && isset($_POST['telephone'])) {
 
   $prenom = htmlspecialchars($_POST['prenom']);
   $nom = htmlspecialchars($_POST['nom']);
-  $address = htmlspecialchars($_POST['address']);
+  $adressePostale = htmlspecialchars($_POST['adressePostale']);
 
-  if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-    $mail = htmlspecialchars($_POST['mail']);
+  if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $email = htmlspecialchars($_POST['email']);
   } else {
     header('location:../index.php?erreur=' . ERREUR_EMAIL);
   }
 
-  if (filter_var($_POST['numero'], FILTER_VALIDATE_INT)) {
-    if (strlen($_POST['numero'] = $_POST['numero']) >= 10) {
-      $numero = $_POST['numero'];
+  if (filter_var($_POST['telephone'], FILTER_VALIDATE_INT)) {
+    if (strlen($_POST['telephone'] = $_POST['telephone']) >= 10) {
+      $numero = $_POST['telephone'];
     } else {
       header('location:../index.php?erreur=' . ERREUR_NUMERO);
       die;
     }
   }
 
-  if ($_POST['password'] === $_POST['password2']) {
-    if (strlen($_POST['password']) >= 8) {
-      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    } else {
-      header('location:../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
+  if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nombrePlaces =$_POST['nombrePlaces'];
+    $tarif = $_POST['tarif'];
+    $passSelection = isset($_POST['passSelection']) ? $_POST ['passeSelection'] : '';
+
+    if(empty($nombrePlaces) || empty($tarif)) {
+      header("Location: ../index.php?error=missing_fields"); 
+      exit;
     }
-  } else {
-    header('location:../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
+
+    header('location:../reservations.php?prenom='. $prenom . "&nom=" . $nom . "&email=" . $email . "&tarif" . $tarif);
+  exit;
+  } else{
+    header("location: ../index.php");
+    exit;
   }
+
+  }
+
+  // if ($_POST['password'] === $_POST['password2']) {
+  //   if (strlen($_POST['password']) >= 8) {
+  //     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  //   } else {
+  //     header('location:../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
+    
+  // } else {
+  //   header('location:../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
+  // }
 
   // Tout s'est bien passé, on peut instancier notre utilisateur :
-  $user = new User($nom, $prenom, $mail, $password, $address, $numero);
+  // $user = new User($nom, $prenom, $email, $adressePostale, $telephone);
 
-  $retour = $Database->saveUtilisateur($user);
+  // $retour = $Database->saveUtilisateur($user);
 
-  if ($retour) {
-    header('location:../connexion.php?succes=inscription');
-    die;
-  } else {
-    header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-    die;
-  }
+  // if ($retour) {
+  //   header('location:../connexion.php?succes=inscription');
+  //   die;
+  // } else {
+  //   header('location:../index.php?erreur=' . ERREUR_ENREGISTREMENT);
+  //   die;
+  // }
 
-  var_dump($user);
-} else {
-  header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
-}
+  // var_dump($user);
+// else {
+//   header('location:../index.php?erreur=' . ERREUR_CHAMP_VIDE);
+ 
+header('location:reservations.php');
+  die;

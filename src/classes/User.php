@@ -5,30 +5,30 @@ class User
   private $_id;
   private $_nom;
   private $_prenom;
-  private $_mail;
+  private $_email;
   private $_password;
-  private $_address;
-  private $_numero;
+  private $_adressePostale;
+  private $_telephone;
   private $_role;
 
   /**
    * Création d'un nouvel utilisateur
    * @param string $nom      Le nom de l'utilisateur
    * @param string $prenom   Le prénom de l'utilisateur
-   * @param string $mail     Le mail de l'utilisateur
+   * @param string $email     Le mail de l'utilisateur
    * @param string $password Le mot de passe chiffré de l'utilisateur
-   * @param string $address  L'addresse de l'utilisateur
-   * @param string  $numero   Le numéro de téléphone de l'utlisateur
+   * @param string $adressePostale  L'addresse de l'utilisateur
+   * @param string  $telephone   Le numéro de téléphone de l'utlisateur
    * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
    */
-  function __construct(string $nom, string $prenom, string $mail, string $password, string $address, string $numero, int|string $id = "à créer", $role = "user")
+  function __construct(string $nom, string $prenom, string $email, string $password, string $adressePostale, string $telephone, int|string $id = "à créer", $role = "user")
   {
     $this->setId($id);
     $this->setNom($nom);
     $this->setPrenom($prenom);
-    $this->setMail($mail);
-    $this->setAddress($address);
-    $this->setNumero($numero);
+    $this->setEmail($email);
+    $this->setAdressePostale($adressePostale);
+    $this->setTelephone($telephone);
     $this->setPassword($password);
     $this->setRole($role);
   }
@@ -61,29 +61,29 @@ class User
   {
     $this->_prenom = $prenom;
   }
-  public function getMail(): string
+  public function getEmail(): string
   {
-    return $this->_mail;
+    return $this->_email;
   }
-  public function setMail(string $mail)
+  public function setEmail(string $email)
   {
-    $this->_mail = $mail;
+    $this->_email = $email;
   }
- public function getAddress(): string
+ public function getAdressePostale(): string
  {
-  return $this-> _address;
+  return $this-> _adressePostale;
  }
-  public function setAddress(string $address)
+  public function setAdressePostale(string $adressePostale)
   {
-    $this->_address = $address;
+    $this->_adressePostale = $adressePostale;
   }
-  public function getNumero(): string
+  public function getTelephone(): string
  {
-  return $this-> _numero;
+  return $this-> _telephone;
  }
-  public function setNumero(string $numero)
+  public function setTelephone(string $telephone)
   {
-    $this->_numero = $numero;
+    $this->_telephone = $telephone;
   }
   public function getPassword(): string
   {
@@ -143,12 +143,13 @@ class User
       "id" => $this->getId(),
       "nom" => $this->getNom(),
       "prenom" => $this->getPrenom(),
-      "mail" => $this->getMail(),
-      "adresse" => $this->getAddress(),
-      "numero" => $this->getNumero(),
+      "mail" => $this->getEmail(),
+      "adresse" => $this->getAdressePostale(),
+      "numero" => $this->getTelephone(),
       "password" => $this->getPassword(),
       "role" => $this->getRole()
     ];
-  }
+  
 }
- 
+
+}
