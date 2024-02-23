@@ -25,6 +25,7 @@
           min="1"
           max="50"
         />
+        <div id="alertBigNumber">Le Nombre de reservation maxi est 50</div>
 
         <div class="lesTarifs">
           <h3>Réservation(s) en tarif réduit</h3>

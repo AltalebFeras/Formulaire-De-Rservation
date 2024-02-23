@@ -38,12 +38,21 @@ let boutonPrecedentVersOption = document.getElementById(
 let boutonPrecedentVersReservation = document.getElementById(
   "boutonPrecedentVersReservation"
 );
+let alertBigNumber = document.getElementById("alertBigNumber");
+console.log(alertBigNumber);
 
 //pour recuperer la valeur du input type number
 let nombrePlacesValue = 0;
 NombrePlaces.addEventListener("change", function () {
   nombrePlacesValue = parseInt(NombrePlaces.value);
 });
+
+function depasserLeNombreDePlace() {
+  if (NombrePlaces.value > 50) {
+    alertBigNumber.style.display= "block"
+  }
+}
+
 
 //afficher et cacher les tarifs en choissisant les input type radio.
 //afficher un alrt pour le tarif réduit.
@@ -115,7 +124,10 @@ function chooseTariff() {
 reservationBouton.addEventListener("click", function () {
   if (
     chooseTariff() &&
-    NombrePlaces.value > 0 && //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50. //ces tous les checkbox de tarif normal qui sont cachés
+    //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50.
+    NombrePlaces.value > 0 && 
+    NombrePlaces.value <= 50 && 
+     //ces tous les checkbox de tarif normal qui sont cachés
     (pass1jour.checked ||
       pass2jours.checked ||
       pass3jours.checked ||
@@ -131,6 +143,7 @@ reservationBouton.addEventListener("click", function () {
     alertOption.style.display = "none";
     console.log("NombrePlaces est = " + NombrePlaces.value); // pour verfier la valeur du input type number aprés avoir passer à la prochaine section .
   } else {
+    depasserLeNombreDePlace()
     alertOption.textContent =
       "Veuillez indiquer le nombre de réservations et sélectionner un tarif ainsi qu'un pass.";
   }
