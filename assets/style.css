@@ -1,10 +1,15 @@
 body { 
   display: flex;
+  flex-direction: column;
   max-width: 860px ;
   font-family: Arial, sans-serif;
   justify-content: center;
   background-image: url(../imge.jpeg);
   background-repeat: no-repeat;
+}
+form{
+  padding-top: 22px;
+
 }
 #inscription {
   background: linear-gradient(to bottom, #ffcccc 0%, #ccffcc 33%, #ccccff 66%);
@@ -26,6 +31,9 @@ input[type="text"] {
   border-radius: 5px;
   font-size: 16px;
   width: 200px;
+}
+#alertBigNumber{
+  display: none;
 }
 .bouton,
 .DaccordBouton {
