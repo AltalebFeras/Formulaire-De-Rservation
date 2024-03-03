@@ -32,7 +32,7 @@ switch ($url) {
         <button> <a href="deconnexion.php" class="link" >Déconnexion</a></button>
       <?php } else { ?>
     <header>
-      <a href="https://www.vercorsmusicfestival.com/" class="header__logo">
+      <a href="http://formulaire-de-rservation/" class="header__logo">
         <img src="../logo.png" class="logo" alt="Vercors Music Festival">
       </a>
       <button><a href="connexion.php" class="link">Connexion</a></button>

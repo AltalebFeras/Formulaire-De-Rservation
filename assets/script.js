@@ -39,7 +39,7 @@ let boutonPrecedentVersReservation = document.getElementById(
   "boutonPrecedentVersReservation"
 );
 let alertBigNumber = document.getElementById("alertBigNumber");
-console.log(alertBigNumber);
+let alertBigNumberHelmet = document.getElementById("alertBigNumberHelmet");
 
 //pour recuperer la valeur du input type number
 let nombrePlacesValue = 0;
@@ -47,12 +47,15 @@ NombrePlaces.addEventListener("change", function () {
   nombrePlacesValue = parseInt(NombrePlaces.value);
 });
 
-function depasserLeNombreDePlace() {
-  if (NombrePlaces.value > 50) {
-    alertBigNumber.style.display= "block"
+NombrePlaces.addEventListener("input", function () {
+  var inputValue = parseInt(this.value);
+  if (inputValue > 50 || inputValue <= 0) {
+    this.value = ""; // Clear the input field
+    alertBigNumber.style.display = "block";
+  } else {
+    alertBigNumber.style.display = "none";
   }
-}
-
+});
 
 //afficher et cacher les tarifs en choissisant les input type radio.
 //afficher un alrt pour le tarif réduit.
@@ -125,9 +128,9 @@ reservationBouton.addEventListener("click", function () {
   if (
     chooseTariff() &&
     //j'ai indiqué en HTML que l'input type number a un min = 1 et un max = 50.
-    NombrePlaces.value > 0 && 
-    NombrePlaces.value <= 50 && 
-     //ces tous les checkbox de tarif normal qui sont cachés
+    NombrePlaces.value > 0 &&
+    NombrePlaces.value <= 50 &&
+    //ces tous les checkbox de tarif normal qui sont cachés
     (pass1jour.checked ||
       pass2jours.checked ||
       pass3jours.checked ||
@@ -143,7 +146,7 @@ reservationBouton.addEventListener("click", function () {
     alertOption.style.display = "none";
     console.log("NombrePlaces est = " + NombrePlaces.value); // pour verfier la valeur du input type number aprés avoir passer à la prochaine section .
   } else {
-    depasserLeNombreDePlace()
+    depasserLeNombreDePlace();
     alertOption.textContent =
       "Veuillez indiquer le nombre de réservations et sélectionner un tarif ainsi qu'un pass.";
   }
@@ -158,8 +161,16 @@ boutonPrecedentVersOption.addEventListener("click", function () {
   coordonneesSection.style.display = "none";
 });
 optionBouton.addEventListener("click", function () {
-  optionsSection.style.display = "none";
-  coordonneesSection.style.display = "flex";
+  if (venirAvecDesEnfants.value === "non") {
+    optionsSection.style.display = "none";
+    coordonneesSection.style.display = "flex";
+  } else if (
+    venirAvecDesEnfants.value === "oui" &&
+    nombreCasquesEnfantsValue > 0
+  ) {
+    optionsSection.style.display = "none";
+    coordonneesSection.style.display = "flex";
+  }
 });
 
 // function pour limiter les mulitiplication de chocher les inputs type checkbox.
@@ -212,7 +223,6 @@ venirAvecDesEnfants.addEventListener("change", function () {
     alertOptionEnfant.style.display = "none";
   } else if (venirAvecDesEnfants.value === "oui") {
     sectionEnfantOption.style.display = "block";
-    alertOptionEnfant.style.display = "none";
   }
 });
 
@@ -236,3 +246,125 @@ optionBouton.addEventListener("click", function () {
     console.log(" nombre de casque est = " + nombreCasquesEnfantsValue);
   }
 });
+
+// pour obliger l'utilisateur à choisir entre 1 et 5
+nombreCasquesEnfants.addEventListener("input", function () {
+  var inputValue = parseInt(this.value);
+  if (inputValue > 5 || inputValue <= 0) {
+    this.value = ""; // Clear the input field
+    alertBigNumberHelmet.textContent = " choisir entre 1 et 5 ";
+  } else {
+    alertBigNumberHelmet.textContent = "";
+  }
+});
+
+function calculateTotal() {
+  var nombreReservations = parseInt(
+    document.getElementById("NombrePlaces").value
+  );
+  var passPrice = 0;
+  var passSelection = document.getElementsByName("passSelection");
+  var tentePrice = 0;
+  var vanPrice = 0;
+
+  // Calculate pass price
+  for (var i = 0; i < passSelection.length; i++) {
+    if (passSelection[i].checked) {
+      switch (passSelection[i].value) {
+        case "pass1jourreduit":
+          passPrice += 25;
+          break;
+        case "pass2joursreduit":
+          passPrice += 50;
+          break;
+        case "pass3joursreduit":
+          passPrice += 65;
+          break;
+        case "pass1jour":
+          passPrice += 40;
+          break;
+        case "pass2joursNormal":
+          passPrice += 70;
+          break;
+        case "pass3joursNormal":
+          passPrice += 100;
+          break;
+      }
+    }
+  }
+
+  // Calculate tente price
+  var tenteCheckbox = document.getElementsByName("tenteNuit1");
+  var tenteCheckbox2 = document.getElementsByName("tenteNuit2");
+  var tenteCheckbox3 = document.getElementsByName("tenteNuit3");
+  var tente3NuitsCheckbox = document.getElementsByName("tente3Nuits");
+
+  if (tente3NuitsCheckbox[0].checked) {
+    tentePrice += 12;
+  } else {
+    for (var i = 0; i < tenteCheckbox.length; i++) {
+      if (tenteCheckbox[i].checked) {
+        tentePrice += 5;
+      }
+      if (tenteCheckbox2[i].checked) {
+        tentePrice += 5;
+      }
+      if (tenteCheckbox3[i].checked) {
+        tentePrice += 5;
+      }
+    }
+  }
+
+  // Calculate van price
+  var vanCheckbox = document.getElementsByName("vanNuit1");
+  var vanCheckbox2 = document.getElementsByName("vanNuit2");
+  var vanCheckbox3 = document.getElementsByName("vanNuit3");
+  var van3NuitsCheckbox = document.getElementsByName("van3Nuits");
+
+  if (van3NuitsCheckbox[0].checked) {
+    vanPrice += 12;
+  } else {
+    for (var i = 0; i < vanCheckbox.length; i++) {
+      if (vanCheckbox[i].checked) {
+        vanPrice += 5;
+      }
+      if (vanCheckbox2[i].checked) {
+        vanPrice += 5;
+      }
+      if (vanCheckbox3[i].checked) {
+        vanPrice += 5;
+      }
+    }
+  }
+
+  // Calculate total
+  var total = nombreReservations * passPrice + tentePrice + vanPrice;
+
+  // If enfants option is selected, add casques souhaités
+  var enfantsOption = document.getElementById("venirAvecDesEnfants").value;
+  if (enfantsOption === "oui") {
+    var nombreCasquesEnfants = parseInt(
+      document.getElementById("nombreCasquesEnfants").value
+    );
+    total += nombreCasquesEnfants * 2;
+  }
+
+  // Display the total in the "panier" div
+  document.getElementById("panier").innerText = "Total: " + total + "€";
+}
+
+// Call the calculateTotal function whenever there is a change in the form
+document
+  .getElementById("inscription")
+  .addEventListener("change", calculateTotal);
+
+// Function to handle changes in the form inputs and recalculate the total price
+function handleFormChange() {
+  calculateTotal();
+  // You can add more logic here if needed
+}
+
+// Attach the handleFormChange function to various form inputs and events
+document
+  .getElementById("inscription")
+  .addEventListener("change", handleFormChange);

@@ -1,15 +1,14 @@
-body { 
+body {
   display: flex;
   flex-direction: column;
-  max-width: 860px ;
+  max-width: 860px;
   font-family: Arial, sans-serif;
   justify-content: center;
   background-image: url(../imge.jpeg);
   background-repeat: no-repeat;
 }
-form{
+form {
   padding-top: 22px;
-
 }
 #inscription {
   background: linear-gradient(to bottom, #ffcccc 0%, #ccffcc 33%, #ccccff 66%);
@@ -27,15 +26,14 @@ input[type="checkbox"] {
 input[type="number"],
 input[type="email"],
 input[type="password" i],
-input[type="text"] 
-{
+input[type="text"] {
   padding: 0.5rem;
   border: 2px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   width: 200px;
 }
-#alertBigNumber{
+#alertBigNumber {
   display: none;
 }
 .bouton,
@@ -103,7 +101,10 @@ label {
 #coordonnees {
   flex-direction: column;
 }
-#alertOption {
+#alertOption,
+#alertBigNumber,
+#alertBigNumberHelmet,
+.alertOptionEnfant {
   text-align: justify;
   max-width: 300px;
   font-size: large;
@@ -232,4 +233,8 @@ legend::after {
 .card:hover .card-title {
   transition: all 0.5s ease-out;
   color: #ffffff;
+}
+#panier {
+  color: #2600ff;
+  font-size: xx-large;
 }

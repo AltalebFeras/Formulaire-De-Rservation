@@ -13,13 +13,14 @@
   }
   include './includes/header.php';
   ?>
+<div id="panier"></div>
 
   <form action="./src/traitement.php" id="inscription" method="POST" onsubmit="return Validation();">
     <fieldset id="reservation">
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
       <input type="number" name="nombrePlaces" id="NombrePlaces" required min="1" max="50" />
-      <div id="alertBigNumber">Le Nombre de reservation maxi est 50</div>
+      <div id="alertBigNumber">Le Nombre de reservation est entre 1 mini et 50 maxi</div>
 
       <div class="lesTarifs">
         <h3>Réservation(s) en tarif réduit</h3>
@@ -145,7 +146,9 @@
           Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?
         </h4>
         <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
+        <div id="alertOptionEnfant" ><p class="alertOptionEnfant" >Veuillez indiquer le nombre de</p></div>
         <input type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" min="1" max="5" />
+        <div id="alertBigNumberHelmet" ></div>
         <p>*Dans la limite des stocks disponibles.</p>
       </section>
 

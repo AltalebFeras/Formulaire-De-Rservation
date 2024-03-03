@@ -29,10 +29,17 @@ include 'includes/header.php';
 <main>
   <?php include 'includes/colonne.php'; ?>
   <div class="content">
-    <?php if ($section == "compte") {
-      include 'includes/section-compte.php';
-    } else { ?>
-      <p>Vous n'avez pas encore de réservation.</p>
-    <?php } ?>
+    <?php 
+      switch ($section) {
+        case "compte":
+          include 'includes/section-compte.php';
+          break;
+        case "abonnements":
+          include 'includes/section-abonnements.php';
+          break;
+        default:
+          echo "<p>Vous n'avez pas encore de réservation.</p>";
+      }
+    ?>
   </div>
 </main>
