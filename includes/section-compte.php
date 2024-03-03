@@ -10,9 +10,9 @@
         <div class="flex column">
             <span><?= $user->getNom() ?></span>
             <span><?= $user->getPrenom() ?></span>
-            <span><?= $user->getMail() ?></span>
+            <span><?= $user->getEmail() ?></span>
             <span><?= $user->getRole() ?></span>
         </div>
     </div>
-    <button onclick="location.href='src/suppression?surppression=<?= $user->getId() ?>' ">Supprimer mon compte</button>
+    <button class="suprimerMonCompte" onclick="location.href='src/suppression?surppression=<?= $user->getId() ?>' ">Supprimer mon compte</button>
 </section>

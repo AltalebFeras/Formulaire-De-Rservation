@@ -1,8 +1,8 @@
-header{
-    max-width: 860px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header {
+  max-width: 860px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 button {
   text-decoration: none;
@@ -58,11 +58,10 @@ button:hover::before {
 button:active {
   background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
 }
-header{
-    padding: 30px;
-    display: flex;
-    background: linear-gradient(76deg,#0b99d5,#0bc1c9,#a5d985,#c3975b);
-
+header {
+  padding: 30px;
+  display: flex;
+  background: linear-gradient(76deg, #0b99d5, #0bc1c9, #a5d985, #c3975b);
 }
 .link {
   color: white;
@@ -70,7 +69,18 @@ header{
   font-weight: bold;
   text-decoration: none;
 }
-.logo{
-    width: 200px;
-    height: 60px;
+.logo {
+  width: 200px;
+  height: 60px;
+}
+.suprimerMonCompte {
+  width: fit-content;
+}
+.flex ,.abonnements{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.compte:hover
+,.abonnements:hover{
+cursor: pointer;
 }

@@ -59,20 +59,20 @@ if (
   header('location:../index.php?erreur='.ERREUR_CHAMP_VIDE);
 }
 
-  // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  //   $nombrePlaces = $_POST['nombrePlaces'];
-  //   $tarif = $_POST['tarif'];
-  //   $passSelection = isset($_POST['passSelection']) ? $_POST['passeSelection'] : '';
+    $nombrePlaces = $_POST['nombrePlaces'];
+    $tarif = $_POST['tarif'];
+    $passSelection = isset($_POST['passSelection']) ? $_POST['passeSelection'] : '';
 
-  //   if (empty($nombrePlaces) || empty($tarif)) {
-  //     header("Location: ../index.php?error=missing_fields");
-  //     exit;
-  //   }
+    if (empty($nombrePlaces) || empty($tarif)) {
+      header("Location: ../index.php?error=missing_fields");
+      exit;
+    }
 
-  //   header('location:../reservations.php?prenom=' . $prenom . "&nom=" . $nom . "&email=" . $email . "&tarif" . $tarif);
-  //   exit;
-  // } else {
-  //   header("location: ../index.php");
-  //   exit;
-  // }
+    header('location:../reservations.php?prenom=' . $prenom . "&nom=" . $nom . "&email=" . $email . "&tarif" . $tarif);
+    exit;
+  } else {
+    header("location: ../index.php");
+    exit;
+  }
