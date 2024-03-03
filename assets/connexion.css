@@ -1,6 +1,7 @@
 form {
   position: absolute;
   left: 215px;
+  top: 150px;
   max-width: 350px;
   background: #f8f9fd;
   background: linear-gradient(

@@ -1,3 +1,20 @@
+<?php
+$url = $_SERVER['REQUEST_URI'];
+switch ($url) {
+  case str_contains($url, 'tableau-de-bord'):
+    $url = 'tableau-de-bord';
+  break 1;
+  case str_contains($url, 'tableau-admin'):
+    $url = 'tableau-admin';
+  break 1;
+
+  default:
+    $url = 'form';
+  break 1;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,11 +23,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulaire de réservation Music Vercos Festival</title>
   <link rel="stylesheet" href="../assets/header.css" />
-  <script src="./assets/script.js" async></script>
+  <link rel="stylesheet" href="./assets/style.css" />
+
+    <script src="./assets/script.js" async></script>
+
 </head>
-<div>
       <?php if (isset($_SESSION['connecté'])) { ?>
-        <a href="deconnexion.php">Déconnexion</a>
+        <button> <a href="deconnexion.php" class="link" >Déconnexion</a></button>
       <?php } else { ?>
     <header>
       <a href="https://www.vercorsmusicfestival.com/" class="header__logo">
@@ -19,4 +38,4 @@
       <button><a href="connexion.php" class="link">Connexion</a></button>
     </header>
   <?php } ?>
-    </div>
+   

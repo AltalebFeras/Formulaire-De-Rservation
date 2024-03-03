@@ -17,6 +17,7 @@ form{
 input[type="text"],
 input[type="radio"],
 input[type="email"],
+input[type="password" i],
 input[type="number"],
 input[type="tel"],
 input[type="checkbox"] {
@@ -25,7 +26,9 @@ input[type="checkbox"] {
 
 input[type="number"],
 input[type="email"],
-input[type="text"] {
+input[type="password" i],
+input[type="text"] 
+{
   padding: 0.5rem;
   border: 2px solid #ccc;
   border-radius: 5px;

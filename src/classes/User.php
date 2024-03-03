@@ -144,9 +144,9 @@ class User
       "nom" => $this->getNom(),
       "prenom" => $this->getPrenom(),
       "mail" => $this->getEmail(),
-      "adresse" => $this->getAdressePostale(),
-      "numero" => $this->getTelephone(),
       "password" => $this->getPassword(),
+      "numero" => $this->getTelephone(),
+      "adresse" => $this->getAdressePostale(),
       "role" => $this->getRole()
     ];
   

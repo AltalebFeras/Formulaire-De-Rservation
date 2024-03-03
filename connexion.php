@@ -18,17 +18,7 @@ if (isset($_GET['erreur'])) {
 
 include "includes/header.php";
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulaire de réservation Music Vercos Festival</title>
   <link rel="stylesheet" href="./assets/connexion.css" />
-</head>
-
-<body>
   <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
     <?php if ($succes) { ?>
       <div class="message succes" id="messageSucces" >
@@ -55,6 +45,3 @@ include "includes/header.php";
     <?php } ?>
     <input type="submit" value="Se connecter" class="login-button" >
   </form>
-</body>
-
-</html>
