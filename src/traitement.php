@@ -36,7 +36,7 @@ if (
   if (filter_var($_POST['telephone'], FILTER_VALIDATE_INT)) {
     $telephone = $_POST['telephone'];
     if (strlen($telephone) >= 10) {
-      $numero = $telephone;
+      $telephone = $telephone;
     } else {
       header('location:../index.php?erreur=' . ERREUR_NUMERO);
       die;
