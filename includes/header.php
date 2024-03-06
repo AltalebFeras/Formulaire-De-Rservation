@@ -25,7 +25,7 @@ switch ($url) {
   <link rel="stylesheet" href="../assets/header.css" />
   <link rel="stylesheet" href="./assets/style.css" />
 
-    <script src="./assets/script.js" async></script>
+    <script src="./assets/script.js" defer> </script>
 
 </head>
       <?php if (isset($_SESSION['connecté'])) { ?>

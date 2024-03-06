@@ -149,7 +149,5 @@ class User
       "adresse" => $this->getAdressePostale(),
       "role" => $this->getRole()
     ];
-  
 }
-
 }
