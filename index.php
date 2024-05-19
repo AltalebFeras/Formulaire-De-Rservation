@@ -138,6 +138,10 @@
       <select name="enfants" id="venirAvecDesEnfants">
         <option value="non">Non</option>
         <option value="oui">Oui</option>
+        <input  name="enfants" value="Oui" id="enfantsOui" onchange="afficherMasquerCasques()">
+      <label for="enfantsOui">Oui</label>
+      <input  name="enfants" value="Non" id="enfantsNon" onchange="afficherMasquerCasques()">
+      <label for="enfantsNon">Non</label>
       </select>
 
       <!-- Si oui, afficher : -->
